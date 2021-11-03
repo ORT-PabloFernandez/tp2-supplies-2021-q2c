@@ -13,7 +13,7 @@ async function getAllSales(){
     return supplies;
 }
 
-async function findById(id){
+async function findById(id) {
     const connectiondb = await conn.getConnection();
     console.log('Fetching sale with id', id);
     return await connectiondb
@@ -22,7 +22,7 @@ async function findById(id){
                         .findOne({_id: conn.ObjectId(id)});
 }
 
-async function findAllByPurchaseMethod(method){
+async function findAllByPurchaseMethod(method) {
     const connectiondb = await conn.getConnection();
     console.log('Fetching all sales with purchase method', method);
     return await connectiondb
@@ -30,6 +30,16 @@ async function findAllByPurchaseMethod(method){
                         .collection(SALES)
                         .find({purchaseMethod: method})
                         .toArray();
-    }
+}
 
-module.exports = {getAllSales, findById, findAllByPurchaseMethod};
+async function findAllByCustomerEmail(email) {
+    const connectiondb = await conn.getConnection();
+    console.log('Fetching all sales of customer with email', email);
+    return await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({'customer.email': email})
+                        .toArray();
+}
+
+module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail};

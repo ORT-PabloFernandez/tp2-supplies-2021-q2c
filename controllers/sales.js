@@ -18,4 +18,8 @@ async function findAllByPurchaseMethod(method){
     return await sales.findAllByPurchaseMethod(method);
 }
 
-module.exports = {getSales, getSaleById, findAllByPurchaseMethod};
+async function findAllByCustomerEmail(email){    
+    return await sales.findAllByCustomerEmail(email);
+}
+
+module.exports = {getSales, getSaleById, findAllByPurchaseMethod, findAllByCustomerEmail};

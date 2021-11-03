@@ -7,6 +7,9 @@ router.get('/', async (req, res) => {
     if (req.query.purchase_method) {
         const purchaseMethod = req.query.purchase_method;
         res.json(await controller.findAllByPurchaseMethod(purchaseMethod));
+    } else if (req.query.customer_email) {
+        const customerEmail = req.query.customer_email;
+        res.json(await controller.findAllByCustomerEmail(customerEmail));
     } else {
         res.json(await controller.getSales());
     }    
