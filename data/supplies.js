@@ -2,7 +2,7 @@ const { ObjectId } = require('bson');
 const conn = require('./conn');
 const DATABASE = 'sample_supplies';
 const SALES = 'sales';
-
+const SATISFACTION_THRESHOLD = 3;
 
 async function getAllSales(){
     const connectiondb = await conn.getConnection();
@@ -44,4 +44,14 @@ async function getSalesByCustomer(email) {
     return supplies;
 }
 
-module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomer};
+async function getSalesByUnsatisfiedCustomers() {
+    const connectiondb = await conn.getConnection();
+    const supplies = await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({'customer.satisfaction': { $lt: SATISFACTION_THRESHOLD }})
+                        .toArray();    
+    return supplies;
+}
+
+module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomer, getSalesByUnsatisfiedCustomers};
