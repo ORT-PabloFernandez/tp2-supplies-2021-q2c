@@ -4,8 +4,12 @@ const router = express.Router();
 const controller = require('../controllers/sales');
 
 router.get('/', async (req, res) => {
-    console.log("check");
-    res.json(await controller.getSales());
+    if (req.query.purchase_method) {
+        const purchaseMethod = req.query.purchase_method;
+        res.json(await controller.findAllByPurchaseMethod(purchaseMethod));
+    } else {
+        res.json(await controller.getSales());
+    }    
 });
 
 router.get('/:id', async (req, res) => {
@@ -17,11 +21,6 @@ router.get('/:id', async (req, res) => {
         }
         throw error;
     }
-});
-
-router.get('/', async (req, res) => {
-    console.log("check");
-    res.json(await controller.getSales());
 });
 
 module.exports = router;

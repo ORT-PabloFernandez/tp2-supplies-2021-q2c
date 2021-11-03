@@ -13,7 +13,7 @@ async function getAllSales(){
     return supplies;
 }
 
-async function findSaleById(id){
+async function findById(id){
     const connectiondb = await conn.getConnection();
     console.log('Fetching sale with id', id);
     return await connectiondb
@@ -22,4 +22,14 @@ async function findSaleById(id){
                         .findOne({_id: conn.ObjectId(id)});
 }
 
-module.exports = {getAllSales, findSaleById};
+async function findAllByPurchaseMethod(method){
+    const connectiondb = await conn.getConnection();
+    console.log('Fetching all sales with purchase method', method);
+    return await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({purchaseMethod: method})
+                        .toArray();
+    }
+
+module.exports = {getAllSales, findById, findAllByPurchaseMethod};

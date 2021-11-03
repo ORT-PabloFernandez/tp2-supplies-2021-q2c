@@ -6,7 +6,7 @@ async function getSales(){
 }
 
 async function getSaleById(id){    
-    const sale = await sales.findSaleById(id);
+    const sale = await sales.findById(id);
     if (!sale) {
         console.log(`Sale with id${id} not found`);
         throw NotFound(`La venta con id ${id} no fue encontrada.`);
@@ -14,4 +14,8 @@ async function getSaleById(id){
     return sale;
 }
 
-module.exports = {getSales, getSaleById};
+async function findAllByPurchaseMethod(method){    
+    return await sales.findAllByPurchaseMethod(method);
+}
+
+module.exports = {getSales, getSaleById, findAllByPurchaseMethod};
