@@ -43,6 +43,7 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 - /api/sales
 - /api/sales/:id
 - /api/sales?purchaseMethod
+- /api/sales/customer?email
 
 
 

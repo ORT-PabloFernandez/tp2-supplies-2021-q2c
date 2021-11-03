@@ -33,4 +33,15 @@ async function getSaleById(id) {
     return supplies;
 }
 
-module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod};
+
+async function getSalesByCustomer(email) {
+    const connectiondb = await conn.getConnection();
+    const supplies = await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({'customer.email': email})
+                        .toArray();    
+    return supplies;
+}
+
+module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomer};
