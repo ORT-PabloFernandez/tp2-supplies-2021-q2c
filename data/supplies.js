@@ -14,6 +14,16 @@ async function getAllSales(){
     return supplies;
 }
 
+async function getSalesByPurchaseMethod(purchaseMethod) {
+    const connectiondb = await conn.getConnection();
+    const supplies = await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({'purchaseMethod': purchaseMethod})
+                        .toArray();    
+    return supplies;
+}
+
 async function getSaleById(id) {
     const connectiondb = await conn.getConnection();
     const supplies = await connectiondb
@@ -23,4 +33,4 @@ async function getSaleById(id) {
     return supplies;
 }
 
-module.exports = {getAllSales, getSaleById};
+module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod};
