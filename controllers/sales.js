@@ -1,3 +1,4 @@
+const { NotFound } = require('http-errors');
 const sales = require('../data/supplies');
 
 async function getSales(){    
@@ -5,7 +6,12 @@ async function getSales(){
 }
 
 async function getSaleById(id){    
-    return sales.getSaleById(id);
+    const sale = await sales.findSaleById(id);
+    if (!sale) {
+        console.log(`Sale with id${id} not found`);
+        throw NotFound(`La venta con id ${id} no fue encontrada.`);
+    }
+    return sale;
 }
 
 module.exports = {getSales, getSaleById};

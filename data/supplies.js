@@ -13,7 +13,7 @@ async function getAllSales(){
     return supplies;
 }
 
-async function getSaleById(id){
+async function findSaleById(id){
     const connectiondb = await conn.getConnection();
     console.log('Fetching sale with id', id);
     return await connectiondb
@@ -22,4 +22,4 @@ async function getSaleById(id){
                         .findOne({_id: conn.ObjectId(id)});
 }
 
-module.exports = {getAllSales, getSaleById};
+module.exports = {getAllSales, findSaleById};
