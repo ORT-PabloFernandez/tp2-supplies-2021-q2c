@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoclient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId
 const uri = process.env.MONGODB;
 const client = new mongoclient(uri);
 
@@ -12,4 +13,4 @@ async function getConnection(){
     return instance;
 }
 
-module.exports = {getConnection};
+module.exports = {getConnection, ObjectId};

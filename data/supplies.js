@@ -13,4 +13,13 @@ async function getAllSales(){
     return supplies;
 }
 
-module.exports = {getAllSales};
+async function getSaleById(id){
+    const connectiondb = await conn.getConnection();
+    console.log('Fetching sale with id', id);
+    return await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .findOne({_id: conn.ObjectId(id)});
+}
+
+module.exports = {getAllSales, getSaleById};
