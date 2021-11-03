@@ -41,7 +41,7 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 - /api/sales
-
+- /api/sales/:id
 
 
 

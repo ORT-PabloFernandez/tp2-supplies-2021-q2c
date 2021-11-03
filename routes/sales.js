@@ -7,4 +7,15 @@ router.get('/', async (req, res) => {
     res.json(await controller.getSales());
 });
 
+router.get('/:id', async (req, res) => {
+    let id = req.params.id;
+
+    try {
+        let sale = await controller.getSaleById(id);
+        sale ? res.json(sale) : res.status(404).json({});
+    } catch (error) {
+        return res.status(500).json({});
+    }
+});
+
 module.exports = router;
