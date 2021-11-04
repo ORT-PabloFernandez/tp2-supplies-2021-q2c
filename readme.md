@@ -41,6 +41,17 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 - /api/sales
+- /api/sales/filter?purchaseMethod={purchaseMethod}&email={email}
+
+{purchaseMethod} = método de compra ('Online', 'Phone', 'In Store')
+{email} = email del customer asociado
+
+- /api/sales/customers
+- /api/sales/{id}
+
+{id} = id de la venta
+
+- /api/sales/total/location
 
 
 
