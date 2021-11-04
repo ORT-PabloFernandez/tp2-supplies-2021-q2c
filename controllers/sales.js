@@ -1,6 +1,13 @@
 const { NotFound } = require('http-errors');
 const sales = require('../data/supplies');
 
+const UNSATISFIED_LEVELS = [1, 2];
+const SATISFIED_LEVELS = [3, 4, 5];
+
+function getSatisfactionLevels(satisfied) {
+    return satisfied ? SATISFIED_LEVELS : UNSATISFIED_LEVELS;
+}
+
 async function getSales(){    
     return sales.getAllSales();
 }
@@ -22,4 +29,9 @@ async function findAllByCustomerEmail(email){
     return await sales.findAllByCustomerEmail(email);
 }
 
-module.exports = {getSales, getSaleById, findAllByPurchaseMethod, findAllByCustomerEmail};
+async function findAllCustomersBySatisfaction(satisfied){    
+    const saleList = await sales.findAllBySatisfactionLevelIn(getSatisfactionLevels(satisfied));
+    return saleList.map(sale => sale.customer);
+}
+
+module.exports = {getSales, getSaleById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllCustomersBySatisfaction};

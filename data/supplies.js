@@ -42,4 +42,15 @@ async function findAllByCustomerEmail(email) {
                         .toArray();
 }
 
-module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail};
+// El nombre es un poco largo pero así maneja por ejemplo Spring Data sus Repository
+async function findAllBySatisfactionLevelIn(satisfactionLevels) {
+    const connectiondb = await conn.getConnection();
+    console.log('Fetching all sales of customers with satisfaction levels', satisfactionLevels);
+    return await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({'customer.satisfaction': { $in: satisfactionLevels }})
+                        .toArray();
+}
+
+module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllBySatisfactionLevelIn};
