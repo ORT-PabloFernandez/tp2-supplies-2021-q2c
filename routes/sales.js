@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     res.json(await controller.getSales());
 });
 
-router.get('id/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     console.log("Id")
     res.json(await controller.getSaleById(req.params.id));
 });
