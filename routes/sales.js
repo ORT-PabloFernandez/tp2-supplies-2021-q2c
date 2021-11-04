@@ -32,4 +32,9 @@ router.get('/:location/total', async (req, res) => {
     res.json(await controller.getSalesTotalByLocation())
 })
 
+router.get('/location/:location', async (req, res) => {
+    console.log("check");
+    res.json(await controller.getSalesByLocation(req.params.location))
+})
+
 module.exports = router;

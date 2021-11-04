@@ -20,9 +20,13 @@ async function getUnsatisfiedCustomers(){
     return sales.getUnsatisfiedCustomers()
 }
 
-async function getSalesTotalByLocation(location){
-    const totalSales = await sales.getSalesByLocation(location)
-    const total = await totalSales.reduce((total, sale) => total + sale.items.reduce((totItems, item) => totItems + item.price.$numberDecimal,0),0)
+async function getSalesTotalByLocation(storeLocation){
+    const totalSales = await sales.getSalesByLocation(storeLocation)
+    const total = await totalSales.reduce((total, sale) => total + sale.items.reduce((totItems, item) => totItems + (item.price.$numberDecimal * item.quantity),0),0)
     return total
 }
-module.exports = {getSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomerEmail, getUnsatisfiedCustomers, getSalesTotalByLocation}
+
+async function getSalesByLocation(){
+    return sales.getSalesByLocation()
+}
+module.exports = {getSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomerEmail, getUnsatisfiedCustomers, getSalesTotalByLocation, getSalesByLocation}

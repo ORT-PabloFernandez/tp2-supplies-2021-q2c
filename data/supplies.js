@@ -57,14 +57,12 @@ async function getUnsatisfiedCustomers(){
   return customers                
 }
 
-async function getSalesByLocation(location){
-    const connectiondb = await conn.getConnection();
-    const supplies = await connectiondb
-                        .db(DATABASE)
-                        .collection(SALES)
-                        .find({storeLocation: location})
-                        .toArray()  
-    return supplies;
+async function getSalesByLocation(storeLocation){
+    const allSales = await getAllSales()
+    const salesByLocation = allSales
+    .filter((sale) => sale.storeLocation == storeLocation)
+
+    return salesByLocation
 }
 
 module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomerEmail, getUnsatisfiedCustomers, getSalesByLocation};
