@@ -41,8 +41,10 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 - /api/sales
-
-
+- /api/sales/sale/:id (devuelve una venta particular por _id)
+- /api/sales/method 
+- /api/sales/custommer 
+- /api/users/insatisfied (encuentra los clientes insatisfechos (con menos de 3 de satisfacción)
 
 
 
