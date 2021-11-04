@@ -4,4 +4,16 @@ async function getSales(){
     return sales.getAllSales();
 }
 
-module.exports = {getSales};
+async function getSaleById(id){    
+   return sales.getSaleById(id);
+}
+
+async function getSalesByPurchaseMethod(purchaseMethod){    
+    return sales.getSalesByPurchaseMethod(purchaseMethod);
+ }
+
+ async function getSalesByCustomner(email){    
+    return sales.getSalesByCustomner(email);
+ }
+
+module.exports = {getSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomner};
