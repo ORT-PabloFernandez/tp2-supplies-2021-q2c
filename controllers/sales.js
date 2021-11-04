@@ -18,4 +18,8 @@ async function getSalesByUnsatisfiedCustomers(){
     return sales.getSalesByUnsatisfiedCustomers();
 }
 
-module.exports = {getSales, getSaleById, getSalesByCustomer, getSalesByUnsatisfiedCustomers};
+async function getSalesTotals(storeLocation){
+    return sales.getSalesTotals(storeLocation);
+}
+
+module.exports = {getSales, getSaleById, getSalesByCustomer, getSalesByUnsatisfiedCustomers, getSalesTotals};

@@ -54,4 +54,29 @@ async function getSalesByUnsatisfiedCustomers() {
     return supplies;
 }
 
-module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomer, getSalesByUnsatisfiedCustomers};
+async function getSalesTotals(storeLocation) {
+    const connectiondb = await conn.getConnection();
+    const supplies = await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .aggregate(
+                            [
+                              {
+                                  $unwind: '$items'
+                              },
+                              {
+                                  $match: {'storeLocation': storeLocation}},
+                              {
+                                $group:
+                                  {
+                                    '_id': { 'storeLocation': '$storeLocation' },
+                                    'totalAmount': { $sum: { $multiply: ['$items.price', '$items.quantity']} }
+                                  }
+                              }
+                            ]
+                         )
+                        .toArray();    
+    return supplies;
+}
+
+module.exports = {getAllSales, getSaleById, getSalesByPurchaseMethod, getSalesByCustomer, getSalesByUnsatisfiedCustomers, getSalesTotals};

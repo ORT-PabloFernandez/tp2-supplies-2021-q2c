@@ -31,6 +31,16 @@ router.get('/customer/unsatisfied', async (req, res) => {
     }
 });
 
+router.get('/total', async (req, res) => {
+    try {        
+        console.log("nacho check" + req.query.location);
+        let sales = await controller.getSalesTotals(req.query.location);
+        sales.length ? res.json(sales) : res.status(404).json([]);
+    } catch (error) {
+        res.status(500).json([]);
+    }
+});
+
 router.get('/:id', async (req, res) => {
     let id = req.params.id;
 
