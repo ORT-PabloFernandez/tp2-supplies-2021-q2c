@@ -45,7 +45,7 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 - /api/sales?purchaseMethod=["Phone"]
 - /api/sales/customer?email=["hasu@hafaut.lc"]
 - /api/sales/customer/unsatisfied
-- /api/sales/total?location=["San Diego"]
+- /api/sales/total?location=["San Diego"] 
 
 
 
