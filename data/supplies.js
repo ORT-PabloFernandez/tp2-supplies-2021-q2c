@@ -63,4 +63,4 @@ async function findAllByLocation(location) {
                         .toArray();
 }
 
-module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllByLocation};
+module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllByLocation, findAllBySatisfactionLevelIn};
