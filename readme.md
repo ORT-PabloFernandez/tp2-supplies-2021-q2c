@@ -40,7 +40,14 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 
 ## Listado de endpoint
-- /api/sales
+- `GET /api/sales` devuelve todas las ventas
+- `GET /api/sales/:id` devuelve la venta con `id`
+- `GET /api/sales?purchase_method=` devuelve todas las ventas por `purchaseMethod`
+- `GET /api/sales?customer_email=` devuelve todas las ventas por `customer.email`
+- `GET /api/sales/customers?satisfied=1` devuelve todos los clientes satisfechos
+- `GET /api/sales/customers?satisfied=0` devuelve todos los clientes insatisfechos
+- `GET /api/sales/total?location=` devuelve el total recaudado en `storeLocation`
+
 
 
 
