@@ -9,7 +9,17 @@ router.get('/customers', async (req, res) => {
         console.log('Fetching customers with satisfaction', satisfied);
         res.json(await controller.findAllCustomersBySatisfaction(satisfied));
     } else {
-        res.status(400).json({message: "Debe indicar un filtro"});
+        res.status(400).json({message: "Método para obtener todos los clientes no soportado. Debe indicar un filtro"});
+    }    
+});
+
+router.get('/total', async (req, res) => {
+    if (req.query.location) {
+        const location = req.query.location;
+        console.log('Fetching total grossed money by location', location);
+        res.json(await controller.findTotalByLocation(location));
+    } else {
+        res.status(400).json({message: "Método para obtener el total recaudado sin filtros no soportado. Debe indicar un filtro"});
     }    
 });
 

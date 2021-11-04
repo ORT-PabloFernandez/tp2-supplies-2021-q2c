@@ -53,4 +53,14 @@ async function findAllBySatisfactionLevelIn(satisfactionLevels) {
                         .toArray();
 }
 
-module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllBySatisfactionLevelIn};
+async function findAllByLocation(location) {
+    const connectiondb = await conn.getConnection();
+    console.log('Fetching all sales of location', location);
+    return await connectiondb
+                        .db(DATABASE)
+                        .collection(SALES)
+                        .find({storeLocation: location})
+                        .toArray();
+}
+
+module.exports = {getAllSales, findById, findAllByPurchaseMethod, findAllByCustomerEmail, findAllByLocation};
