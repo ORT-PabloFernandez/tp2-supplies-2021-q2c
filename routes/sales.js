@@ -17,7 +17,7 @@ router.get('/total', async (req, res) => {
     if (req.query.location) {
         const location = req.query.location;
         console.log('Fetching total grossed money by location', location);
-        res.json(await controller.findTotalByLocation(location));
+        res.json({storeLocation: location, total: await controller.findTotalByLocation(location)});
     } else {
         res.status(400).json({message: "Método para obtener el total recaudado sin filtros no soportado. Debe indicar un filtro"});
     }    

@@ -35,16 +35,13 @@ async function findAllCustomersBySatisfaction(satisfied){
 }
 
 function obtenerTotal(venta) {
-    return venta.items.map(item => {
-        const price = parseFloat(item.price['$numberDecimal']); // no funciona porque no puedo parsear este tipo de dato
-        return price * parseFloat(item.quantity);
-    })
-    .reduce((a, b) => a + b, 0.0);
+    return venta.items
+        .map(item => parseFloat(item.price) * parseFloat(item.quantity))
+        .reduce((a, b) => a + b, 0.0);
 }
 
 async function findTotalByLocation(location){    
     const saleList = await sales.findAllByLocation(location);
-    console.log('saleList', saleList);
     return saleList
         .filter(sale => sale.storeLocation === location)
         .map(sale => obtenerTotal(sale))
