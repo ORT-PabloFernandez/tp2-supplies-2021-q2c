@@ -40,18 +40,18 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 - /api/sales
 
--/api/sales/:id
+- /api/sales/:id
 Params: id del usuario relacionado a la venta
 
--/api/sales/method/:method
+- /api/sales/method/:method
 Params: metodo de pago de la venta puede ser 'Phone', 'Online', 'In store'.
 
--/api/sales/email/:email
+- /api/sales/email/:email
 Params: email del usuario de la venta a buscar.
 
--/api/sales/clientSatisfaction
+- /api/sales/clientSatisfaction
 
--/api/sales/total/location/:location
+- /api/sales/total/location/:location
 Params: locacion de la venta.
 Aun en desarrollo retornara cero. 
 
