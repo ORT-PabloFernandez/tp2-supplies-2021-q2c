@@ -44,12 +44,12 @@ async function getSaleByEmail(email){
     return sales;
 }
 
-async function getClientObjectBySatisfaction(number){
+async function getClientObjectBySatisfaction(){
     const connectiondb = await conn.getConnection();
     const buyers = connectiondb
         .db(DATABASE)
         .collection(SALES)
-        .find({ "customer.satisfaction": {$lt: parseInt(number)} })
+        .find({ "customer.satisfaction": {$lt: 3} })
         .toArray();
     return buyers;
 }
@@ -73,4 +73,10 @@ async function getTotalSalesLocation(location){
 }
 
 
-module.exports = {getAllSales, getSale,getSaleByMethod,getSaleByEmail,getTotalSalesLocation, getClientObjectBySatisfaction};
+module.exports = {
+    getAllSales, 
+    getSale,
+    getSaleByMethod,
+    getSaleByEmail,
+    getTotalSalesLocation, 
+    getClientObjectBySatisfaction};

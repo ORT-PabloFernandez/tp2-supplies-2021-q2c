@@ -37,8 +37,6 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 3. Realizar un pull request a mi repositorio
 
 
-
-
 ## Listado de endpoint
 - /api/sales
 
@@ -51,10 +49,9 @@ Params: metodo de pago de la venta puede ser 'Phone', 'Online', 'In store'.
 -/api/sales/email/:email
 Params: email del usuario de la venta a buscar.
 
--/api/sales/clientSatisfaction/:number
-Params: valor del rating de satisfaction a buscar.
+-/api/sales/clientSatisfaction
 
--api/sales/total/location/:location
+-/api/sales/total/location/:location
 Params: locacion de la venta.
 Aun en desarrollo retornara cero. 
 

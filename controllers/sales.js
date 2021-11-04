@@ -16,8 +16,8 @@ async function getSaleByBuyerEmail(email){
     return sales.getSaleByEmail(email)
 }
 
-async function getClientBySatisfaction(number){
-    return sales.getClientObjectBySatisfaction(number)
+async function getClientBySatisfaction(){
+    return sales.getClientObjectBySatisfaction()
 }
 
 async function getTotalSalesAmountByLocation(location){

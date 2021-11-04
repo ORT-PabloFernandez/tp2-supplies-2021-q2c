@@ -33,9 +33,9 @@ router.get('/email/:email', async (req,res) => {
     }
 });
 
-router.get('/clientSatisfaction/:rating', async(req,res) => {
+router.get('/clientSatisfaction', async(req,res) => {
     try{
-        res.json(await controller.getClientBySatisfaction(req.params.rating))
+        res.json(await controller.getClientBySatisfaction())
     } catch (err){
         res.status(500).send(err)
     }
