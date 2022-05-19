@@ -1,0 +1,3 @@
+use('sample_supplies');
+
+db.sales.find();
