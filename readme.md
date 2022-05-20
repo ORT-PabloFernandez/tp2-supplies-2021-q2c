@@ -42,7 +42,12 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 - /api/sales
 
+- /api/sales/id ----> (Devuelve un JSON de una venta del id ingresado)
 
+- /api/sales?purchaseMethod=Phone ----> (Devuelve un JSON con las ventas con un metodo de compra que se le especifique)
 
+- /api/sales?email=ihuwih@gabec.au ----> (Devuelve un JSON de una venta del email ingresado)
 
+- /api/sales/lowSatisfaction ----> (Devuelve un JSON con las ventas con un mal puntaje por parte de los clientes)
 
+- /api/sales?location=Denver ----> (Devuelve el importe total de las ventas de la localidad especificada)
