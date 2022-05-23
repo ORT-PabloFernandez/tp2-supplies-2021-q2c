@@ -74,11 +74,28 @@ async function getTotalImportBylocation(location){
     return totalImport;
 }
 
+async function getTotalByLocation(location){
+    let totalSales=0;
+    const connectiondb = await conn.getConnection();
+    const suppliesByMethod = await connectiondb
+        .db(DATABASE)
+        .collection(SALES)
+        .find({storeLocation: location})
+        .toArray();
+        suppliesByMethod.forEach(sale => {
+            sale.items.forEach(item=>{
+                totalSales+= parseFloat(item.price);
+            })
+        });
+    return {"Sales $": totalSales.toFixed(2)};
+}
+
 module.exports = {
     getAllSales,
     getOneSale, 
     getSalesByPurchaseMethod, 
     getCustomerForEmail, 
     getUnsatisfiedCustomers, 
-    getTotalImportBylocation
+    getTotalImportBylocation,
+    getTotalByLocation
 };

@@ -24,11 +24,16 @@ async function getTotalImportByLocation(location){
     return sales.getTotalImportBylocation(location);
 }
 
+async function getTotalByLocation(location){
+    return sales.getTotalByLocation(location);
+}
+
 module.exports = {
     getSales, 
     getSale, 
     getSalesByMethod, 
     getSalesForEmail, 
     getUnsatisfiedCustomers, 
-    getTotalImportByLocation
+    getTotalImportByLocation,
+    getTotalByLocation
 };
