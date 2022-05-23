@@ -44,14 +44,14 @@ async function getCustomerForEmail(email){
     return salesForEmail;
 }
 
-async function getDissatisfiedCustomers(value){
+async function getUnsatisfiedCustomers(value){
     const connectiondb = await conn.getConnection();
-    const dissatisfiedCustomers = await connectiondb
+    const unsatisfiedCustomers = await connectiondb
         .db(DATABASE)
         .collection(SALES)
         .find({"customer.satisfaction": {$lt: value}})
         .toArray();
-    return dissatisfiedCustomers;
+    return unsatisfiedCustomers;
 }
 
 async function getTotalImportBylocation(location){
@@ -79,6 +79,6 @@ module.exports = {
     getOneSale, 
     getSalesByPurchaseMethod, 
     getCustomerForEmail, 
-    getDissatisfiedCustomers, 
+    getUnsatisfiedCustomers, 
     getTotalImportBylocation
 };

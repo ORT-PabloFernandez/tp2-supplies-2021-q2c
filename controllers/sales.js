@@ -16,8 +16,8 @@ async function getSalesForEmail(email){
     return sales.getCustomerForEmail(email);
 }
 
-async function getDissatisfiedCustomers(value){
-    return sales.getDissatisfiedCustomers(value);
+async function getUnsatisfiedCustomers(value){
+    return sales.getUnsatisfiedCustomers(value);
 }
 
 async function getTotalImportByLocation(location){
@@ -29,6 +29,6 @@ module.exports = {
     getSale, 
     getSalesByMethod, 
     getSalesForEmail, 
-    getDissatisfiedCustomers, 
+    getUnsatisfiedCustomers, 
     getTotalImportByLocation
 };

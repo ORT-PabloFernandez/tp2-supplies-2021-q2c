@@ -27,10 +27,10 @@ router.get('/customer/:email', async (req, res) => {
 
 //4. Necesitamos encontrar los clientes insatisfechos (con menor a 3 de satisfacción)
 //Lo coloque como constante, por si se requiere modificar la escala en algun momento
-router.get('/customers/dissatisfied', async (req, res) => {
+router.get('/customers/unsatisfied', async (req, res) => {
     const value = 3;
-    console.log("Getting dissatisfied customers with value less than " + value)
-    res.json(await controller.getDissatisfiedCustomers(value));
+    console.log("Getting unsatisfied customers with value less than " + value)
+    res.json(await controller.getUnsatisfiedCustomers(value));
 })
 
 // 5. Generar un endpoint para obtener el importe total de la venta por **localizacion**
